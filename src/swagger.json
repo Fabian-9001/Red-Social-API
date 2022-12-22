@@ -1,0 +1,32 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Red Social",
+        "description": "En este proyecto creado con express,manejamos una API de una red social",
+        "version": "1.0.0"
+    },
+    "host": "https://faruz-social.onrender.com",
+    "servers": [
+        {
+            "url": "http://localhost:9001/api/v1"
+        }
+    ],
+    "paths": {
+        "/users": {
+            "get": {
+                "summary": "Retorna una lista de usuarios",
+                "responses": {
+                    "200": {
+                        "description": "Lista de usuarios"
+                    },
+                    "400": {
+                        "description": "Error de sequelize"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Crea un nuevo usuario"
+            }
+        }
+    }
+}

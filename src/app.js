@@ -8,6 +8,8 @@ const authRoutes = require('./auth/auth.router')
 const cors = require('cors')
 const postsRoutes = require('./posts/posts.router')
 const followsRoutes = require('./follows/follows.router')
+const swaggerDoc = require('./swagger.json')
+const swaggerUi = require('swagger-ui-express')
 
 //Database
 const app = express()
@@ -32,6 +34,7 @@ app.get('/', (req, res) => {
     res.status(200).json('Ok!')
 })
 
+app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
 app.use('/api/v1/users', usersRoutes)
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/posts', postsRoutes)
@@ -41,3 +44,5 @@ app.use('/api/v1', followsRoutes)
 app.listen(config.api.port, () => {
     console.log(`This server is active in ${config.api.host}`)
 })
+
+module.exports = app
